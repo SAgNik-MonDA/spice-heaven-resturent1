@@ -6,8 +6,15 @@ import MenuSection from "@/components/MenuSection";
 import MenuItemDialog from "@/components/MenuItemDialog";
 import Footer from "@/components/Footer";
 import Cart from "@/components/Cart";
+import { NotificationBanner } from "@/components/NotificationBanner";
 import { CartProvider } from "@/contexts/CartContext";
 import { menuData, categories, MenuItem } from "@/data/menuData";
+import { useNotifications } from "@/hooks/use-notifications";
+
+const NotificationsWrapper = ({ children }: { children: React.ReactNode }) => {
+  useNotifications();
+  return <>{children}</>;
+};
 
 const Index = () => {
   const [activeCategory, setActiveCategory] = useState(categories[0]);
@@ -28,9 +35,11 @@ const Index = () => {
 
   return (
     <CartProvider>
-      <div className="min-h-screen bg-background">
-        <Navbar allItems={allMenuItems} onItemClick={handleItemClick} />
-        <Hero />
+      <NotificationsWrapper>
+        <div className="min-h-screen bg-background">
+          <Navbar allItems={allMenuItems} onItemClick={handleItemClick} />
+          <NotificationBanner />
+          <Hero />
         <CategoryTabs 
           categories={categories}
           activeCategory={activeCategory}
@@ -53,7 +62,8 @@ const Index = () => {
 
         <Footer />
         <Cart />
-      </div>
+        </div>
+      </NotificationsWrapper>
     </CartProvider>
   );
 };
