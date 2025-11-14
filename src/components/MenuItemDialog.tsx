@@ -18,6 +18,16 @@ import rolls from "@/assets/rolls.jpg";
 import vegRice from "@/assets/veg-rice.jpg";
 import nonVegRice from "@/assets/non-veg-rice.jpg";
 import chowmein from "@/assets/chowmein.jpg";
+import chickenbiryani from "@/assets/chicken-biriyani.avif";
+import eggbiryani from "@/assets/egg-biriyani.avif";
+import alubiryani from "@/assets/alu-biriyani.png";
+import vegchow from "@/assets/vegchow.jpg";
+import chickenchow from "@/assets/chickenchow.png";
+import eggchow from "@/assets/eggchow.jpg";
+import eggchickenchow from "@/assets/eggchickenchow.png";
+import pannerchow from "@/assets/pannerchow.png";
+import mixchow from "@/assets/mixchow.jpg";
+
 
 interface MenuItemDialogProps {
   item: MenuItem | null;
@@ -35,6 +45,15 @@ const imageMap: Record<string, string> = {
   "veg-rice": vegRice,
   "non-veg-rice": nonVegRice,
   "chowmein": chowmein,
+  "chicken-biriyani": chickenbiryani,
+  "egg-biriyani": eggbiryani,
+  "alu-biriyani": alubiryani,
+  "vegchow": vegchow,
+  "chickenchow": chickenchow,
+  "eggchow": eggchow,
+  "eggchickenchow": eggchickenchow,
+  "pannerchow": pannerchow,
+  "mixchow": mixchow,
 };
 
 const MenuItemDialog = ({ item, open, onOpenChange }: MenuItemDialogProps) => {
