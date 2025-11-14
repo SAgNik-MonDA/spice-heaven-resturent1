@@ -13,22 +13,22 @@ interface NotificationSchedule {
 const NOTIFICATION_SCHEDULES: NotificationSchedule[] = [
   {
     id: 'lunch',
-    hour: 22,
-    minute: 50,
+    hour: 12,
+    minute: 30,
     title: '🍽️ Lunchtime Cravings?',
     body: 'Delicious biryani, curries, and more waiting for you. Order now and satisfy your hunger!',
   },
   {
     id: 'snacks',
-    hour: 22,
-    minute: 55,
+    hour: 17,
+    minute: 0,
     title: '🍿 Evening Snack Time!',
     body: 'Crispy pakoras, rolls, and chowmein are calling. Perfect for your evening cravings!',
   },
   {
     id: 'dinner',
-    hour: 22,
-    minute: 59,
+    hour: 20,
+    minute: 0,
     title: '🌙 Dinner Delights Await',
     body: 'End your day with our special dishes. Fresh, hot, and ready to be delivered!',
   },
