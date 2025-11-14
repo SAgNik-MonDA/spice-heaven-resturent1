@@ -14,21 +14,21 @@ const NOTIFICATION_SCHEDULES: NotificationSchedule[] = [
   {
     id: 'lunch',
     hour: 22,
-    minute: 12,
+    minute: 50,
     title: '🍽️ Lunchtime Cravings?',
     body: 'Delicious biryani, curries, and more waiting for you. Order now and satisfy your hunger!',
   },
   {
     id: 'snacks',
     hour: 22,
-    minute: 15,
+    minute: 55,
     title: '🍿 Evening Snack Time!',
     body: 'Crispy pakoras, rolls, and chowmein are calling. Perfect for your evening cravings!',
   },
   {
     id: 'dinner',
     hour: 22,
-    minute: 17,
+    minute: 59,
     title: '🌙 Dinner Delights Await',
     body: 'End your day with our special dishes. Fresh, hot, and ready to be delivered!',
   },
@@ -109,20 +109,20 @@ export const useNotifications = () => {
     const currentHour = now.getHours();
     const currentMinute = now.getMinutes();
     const today = now.toDateString();
-    const lastSent = localStorage.getItem(STORAGE_KEYS.LAST_NOTIFICATION);
 
     NOTIFICATION_SCHEDULES.forEach((schedule) => {
-      const notificationKey = `${today}-${schedule.id}`;
+      const notificationKey = `notification_${schedule.id}_${today}`;
+      const alreadySent = localStorage.getItem(notificationKey);
       
       // Check if it's time for this notification and we haven't sent it today
       if (
         currentHour === schedule.hour &&
         currentMinute >= schedule.minute &&
         currentMinute < schedule.minute + 5 && // 5-minute window
-        lastSent !== notificationKey
+        !alreadySent
       ) {
         sendNotification(schedule.title, schedule.body, schedule.icon);
-        localStorage.setItem(STORAGE_KEYS.LAST_NOTIFICATION, notificationKey);
+        localStorage.setItem(notificationKey, 'sent');
       }
     });
   }, [sendNotification]);
